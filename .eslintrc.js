@@ -35,6 +35,8 @@ module.exports = {
         'import',
     ],
     rules: {
+        'react/react-in-jsx-scope': 'off',
+        'react/display-name': 'off',
         'fsd-imports-checker/relative-path-checker': ['error', { alias: '@' }],
         'fsd-imports-checker/imports-between-layers': [
             'error',
