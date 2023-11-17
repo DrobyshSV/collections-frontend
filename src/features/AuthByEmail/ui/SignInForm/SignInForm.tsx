@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Facebook, Google, Twitter, Github, Lock } from 'react-bootstrap-icons';
-import { memo } from 'react';
 
 export interface SignInFormProps {
   className?: string;

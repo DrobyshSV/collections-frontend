@@ -1,10 +1,10 @@
 import { ForwardedRef, forwardRef, ReactNode } from 'react';
+import { Nav } from 'react-bootstrap';
+import { NavProps } from 'react-bootstrap/Nav';
 import { LinkProps, NavLink } from 'react-router-dom';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
 
-import { Nav } from 'react-bootstrap';
-import { NavProps } from 'react-bootstrap/Nav';
 
 type AppLinkPropsWithoutConflict = Omit<LinkProps, 'onWheelCapture'> & Omit<NavProps, 'onWheelCapture'>;
 

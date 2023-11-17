@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
+import { Spinner } from 'react-bootstrap';
 
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { Modal } from '@/shared/ui/Modal';
 
 import { SignFormAsync } from '../SignForm/SignForm.async';
-import { Spinner } from 'react-bootstrap';
-import { Modal } from '@/shared/ui/Modal';
 
 interface LoginModalProps {
   className?: string;

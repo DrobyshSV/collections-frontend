@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState , memo } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 
-import { memo } from 'react';
-import SignInForm from '@/features/AuthByEmail/ui/SignInForm/SignInForm';
-import SignUpForm from '@/features/AuthByEmail/ui/SignUpForm/SignUpForm';
+import SignInForm from '../SignInForm/SignInForm';
+import SignUpForm from '../SignUpForm/SignUpForm';
 
 export interface LoginFormProps {
   className?: string;

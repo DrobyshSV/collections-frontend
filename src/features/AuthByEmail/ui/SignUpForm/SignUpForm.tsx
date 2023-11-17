@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import {
   Facebook,
@@ -7,7 +7,6 @@ import {
   Github,
   Check,
 } from 'react-bootstrap-icons';
-import { memo } from 'react';
 
 export interface SignUpFormProps {
   className?: string;

@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
+
 import { AppLink } from '@/shared/ui/AppLink';
+import { Icon } from '@/shared/ui/Icon';
 
 import { NavbarItemType } from '../../model/types/navbar';
-import { Icon } from '@/shared/ui/Icon';
 
 interface NavbarItemProps {
   item: NavbarItemType;

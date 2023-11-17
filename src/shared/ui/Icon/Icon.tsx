@@ -5,6 +5,7 @@ export interface IconProps extends icons.IconProps {
 }
 
 export const Icon = ({ iconName, ...props }: IconProps) => {
+  // eslint-disable-next-line import/namespace
   const BootstrapIcon = icons[iconName];
   return <BootstrapIcon {...props} />;
-}
+};

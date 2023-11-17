@@ -1,9 +1,10 @@
 import React, { memo, ReactNode, useCallback } from 'react';
+import { Dropdown } from 'react-bootstrap';
+
 import {
   getRouteAdmin,
   getRouteProfile,
 } from '@/shared/consts/router';
-import { Dropdown } from 'react-bootstrap';
 import { AppLink } from '@/shared/ui/AppLink';
 
 interface AvatarDropdownProps {

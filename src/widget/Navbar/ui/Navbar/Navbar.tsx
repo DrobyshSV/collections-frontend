@@ -1,15 +1,17 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
-import LOGO from '@/shared/assets/icons/data-collection.png';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { Nav } from 'react-bootstrap';
-import { AppImage } from '@/shared/ui/AppImage/AppImage';
-import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteMain } from '@/shared/consts/router';
-import { useNavbarItems } from '../../model/selectors/getNavbarItems';
-import { NavbarItem } from '../NavbarItem/NavbarItem';
-import { UserDropdown } from '@/features/UserDropdown';
+
 import { SignModal } from '@/features/AuthByEmail';
 import { DataSearchForm } from '@/features/DataSearchForm';
+import { UserDropdown } from '@/features/UserDropdown';
+import LOGO from '@/shared/assets/icons/data-collection.png';
+import { getRouteMain } from '@/shared/consts/router';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppImage } from '@/shared/ui/AppImage/AppImage';
+import { AppLink } from '@/shared/ui/AppLink';
+
+import { useNavbarItems } from '../../model/selectors/getNavbarItems';
+import { NavbarItem } from '../NavbarItem/NavbarItem';
 
 interface NavbarProps {
   className?: string;
