@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import '@/app/styles/index.scss';
 
+import ErrorBoundary from '@/app/providers/ErrorBoundary/ui/ErrorBoundary';
+
 import App from './app/App';
 
 const container = document.getElementById('root');
@@ -16,6 +18,8 @@ const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </BrowserRouter>,
 );
