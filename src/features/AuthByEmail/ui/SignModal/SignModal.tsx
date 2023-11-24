@@ -4,7 +4,7 @@ import { Spinner } from 'react-bootstrap';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Modal } from '@/shared/ui/Modal';
 
-import { SignFormAsync } from '../SignForm/SignForm.async';
+import { SignFormAsync } from '../AuthForm/SignForm.async';
 
 interface LoginModalProps {
   className?: string;

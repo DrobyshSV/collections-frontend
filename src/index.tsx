@@ -7,6 +7,7 @@ import '@/app/styles/index.scss';
 import ErrorBoundary from '@/app/providers/ErrorBoundary/ui/ErrorBoundary';
 
 import App from './app/App';
+import { StoreProvider } from './app/providers/StoreProvider';
 
 const container = document.getElementById('root');
 
@@ -18,8 +19,10 @@ const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <StoreProvider>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </StoreProvider>
   </BrowserRouter>,
 );

@@ -1,3 +1,4 @@
+import { UserRole } from '@/entities/User';
 import { AboutPage } from '@/pages/AboutPage';
 import { AdminPage } from '@/pages/AdminPage';
 import { CollectionDetailsPage } from '@/pages/CollectionDetailsPage';
@@ -59,7 +60,7 @@ export const routerConfig: Record<AppRoutes, AppRoutesProps> = {
     path: getRouteAdmin(),
     element: <AdminPage />,
     authOnly: true,
-    roles: ['admin'],
+    roles: [UserRole.ADMIN],
   },
   [AppRoutes.FORBIDDEN]: {
     path: getRouteForbidden(),

@@ -1,6 +1,8 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import { Nav } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
+import { getUserAuthData } from '@/entities/User';
 import { SignModal } from '@/features/AuthByEmail';
 import { DataSearchForm } from '@/features/DataSearchForm';
 import { UserDropdown } from '@/features/UserDropdown';
@@ -19,7 +21,8 @@ interface NavbarProps {
 
 export const Navbar = memo((props: NavbarProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
-  const authData = true;
+  const authData = useSelector(getUserAuthData);
+
   const navbarItemsList = useNavbarItems();
 
   const itemsList = useMemo(
@@ -56,7 +59,7 @@ export const Navbar = memo((props: NavbarProps) => {
             {itemsList}
           </Nav>
           <DataSearchForm />
-          {2 ? (
+          {!authData ? (
             <div className="col-md-3 text-end">
               <button
                 onClick={onOpenModal}

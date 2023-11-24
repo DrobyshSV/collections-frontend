@@ -1,13 +1,56 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Facebook, Google, Twitter, Github, Lock } from 'react-bootstrap-icons';
+import { useSelector } from 'react-redux';
+
+import { useAppDispatch } from '@/shared/config/hooks/useAppDispatch/useAppDispatch';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
+
+import { getSignEmail } from '../../model/selectors/getSignEmail/getSignEmail';
+import { getSignError } from '../../model/selectors/getSignError/getSignError';
+import { getSignIsLoading } from '../../model/selectors/getSignIsLoading/getSignIsLoading';
+import { getSignPassword } from '../../model/selectors/getSignPassword/getSignPassword';
+import { signByEmail } from '../../model/services/signByEmail';
+import { signActions } from '../../model/slice/signSlices';
 
 export interface SignInFormProps {
   className?: string;
   onSuccess: () => void;
 }
 
-const SignInForm = memo(() => {
+const SignInForm = memo(({ onSuccess }: SignInFormProps) => {
+  const dispatch = useAppDispatch();
+
+  const error = useSelector(getSignError);
+  const isLoading = useSelector(getSignIsLoading);
+  const password = useSelector(getSignPassword);
+  const email = useSelector(getSignEmail);
+  const forceUpdate = useForceUpdate();
+
+  const onChangeEmail = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      console.log('Email changed:', e.target.value);
+      dispatch(signActions.setEmail(e.target.value));
+    },
+    [dispatch],
+  );
+
+  const onChangePassword = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      console.log('Password changed:', e.target.value);
+      dispatch(signActions.setPassword(e.target.value));
+    },
+    [dispatch],
+  );
+
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(signByEmail({ email, password }));
+    if (result.meta.requestStatus === 'fulfilled') {
+      onSuccess();
+      forceUpdate();
+    }
+  }, [dispatch, email, password, onSuccess, forceUpdate]);
+
   return (
     <Form className="mt-4">
       <div className="text-center mb-3">
@@ -31,16 +74,20 @@ const SignInForm = memo(() => {
       <Form.Group className="mb-4">
         <Form.Control
           type="email"
-          id="loginName"
-          placeholder="Email or username"
+          id="email"
+          placeholder="Email"
+          onChange={onChangeEmail}
+          value={email}
         />
       </Form.Group>
 
       <Form.Group className="mb-4">
         <Form.Control
+          onChange={onChangePassword}
           type="password"
           id="loginPassword"
           placeholder="Password"
+          value={password}
         />
       </Form.Group>
 
@@ -58,7 +105,12 @@ const SignInForm = memo(() => {
         </div>
       </div>
 
-      <Button type="submit" className="btn btn-primary btn-block mb-4">
+      <Button
+        onClick={onLoginClick}
+        disabled={isLoading}
+        type="button"
+        className="btn btn-primary btn-block mb-4"
+      >
         <Lock className="me-2" />
         Sign in
       </Button>

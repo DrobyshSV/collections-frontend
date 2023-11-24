@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+
+import { getUserAuthData } from '@/entities/User';
 import {
   getRouteAbout,
   getRouteCollections,
@@ -8,7 +11,7 @@ import {
 import { NavbarItemType } from '../types/navbar';
 
 export const useNavbarItems = () => {
-  const userData = { id: '1' };
+  const userData = useSelector(getUserAuthData);
   const navbarItemsList: NavbarItemType[] = [
     {
       path: getRouteMain(),
